@@ -4,6 +4,14 @@ class indiceError(Exception):
     "Error de indice"
     pass
 
+class negativeInteger(Exception):
+    "Entero negativo"
+    pass
+
+class sizeError(Exception):
+    "Entero negativo"
+    pass
+
 def verificarInicializacion(a,b,T,posicion,ctr):
     if b[posicion] != None and (0 <= b[posicion] and b[posicion] <= ctr):
         if a[b[posicion]] == posicion:
@@ -36,13 +44,21 @@ def asignarValor(a,b,T,valor,posicion,ctr):
         return ctr
 
 def main():
-
-    try:
-        n = int(input("Por favor introduzca el tamaño del arreglo: "))
-        if n <= 0:
-            print("Se requieren enteros positivos")
-    except ValueError:
-        print("El valor no es un entero")
+    nasignado = False
+    while not nasignado:
+        try:
+            n = int(input("Por favor introduzca el tamaño del arreglo: "))
+            if n <= 0:
+                raise negativeInteger
+            elif n >= 1000000:
+                raise sizeError
+            nasignado = True
+        except ValueError:
+            print("El valor no es un entero")
+        except negativeInteger:
+            print("El valor no es un entero positivo")
+        except sizeError:
+            print("Entero muy grande")
     a = [None]*n
     b = [None]*n
     T = [None]*n
@@ -92,7 +108,7 @@ def main():
             ctr = 0
         else:
             print("Error de sintaxis vuelva a escribir")
-    print("Exit")
+    print("Saliste!")
 
 if __name__ == "__main__":
     main()
