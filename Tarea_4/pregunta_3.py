@@ -7,13 +7,13 @@ class indiceError(Exception):
 def verificarInicializacion(a,b,T,posicion,ctr):
     if b[posicion] != None and (0 <= b[posicion] and b[posicion] <= ctr):
         if a[b[posicion]] == posicion:
-            print(f"{T[posicion]} esta inicializado")
+            print(f"El elemento T[{posicion}] está inicializado y vale {T[posicion]}")
             return True
         else:
-            print(f"{T[posicion]} NO esta inicializado")
+            print(f"El elemento T[{posicion}] NO está inicializado")
             return False
     else:
-        print(f"{T[posicion]} NO esta inicializado")
+        print(f"El elemento T[{posicion}] NO está inicializado")
         return False
 
 def asignarValor(a,b,T,valor,posicion,ctr):
@@ -42,16 +42,13 @@ def main():
         if n <= 0:
             print("Se requieren enteros positivos")
     except ValueError:
-        print("el valor no es un entero")
-    if (isinstance(n,int)):
-        print("Holi")
-    else:
-        print("Chao")
+        print("El valor no es un entero")
     a = [None]*n
     b = [None]*n
     T = [None]*n
     global ctr
     ctr = 0
+    print("Introduzca el comando")
     for line in sys.stdin:
         entrada = line.rstrip().split(" ")
         if 'salir' == line.rstrip().lower():
@@ -61,9 +58,7 @@ def main():
                 try:
                     posicion = int(entrada[1])
                     valor = int(entrada[2])
-                    print(f"posicion: {posicion}")
-                    print(f"valor: {valor}")
-                    print(f"n vale: {n}")
+                    print(f"La posicion es: {posicion} y el valor es: {valor}")
                     if 0 > posicion or posicion >= n:
                         print(f"El valor {posicion} no está en el rango [0,{n-1}]")
                         raise indiceError
@@ -84,7 +79,7 @@ def main():
                     else:
                         verificarInicializacion(a,b,T,posicion,ctr)
                 except ValueError:
-                    print("No son numeros")
+                    print("Error de sintaxis en argumentos. No son números")
                 except indiceError:
                     continue
             else:
