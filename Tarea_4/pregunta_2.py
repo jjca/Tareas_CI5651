@@ -1,9 +1,6 @@
 import numpy as np
 A = np.array([3,4,2,10])
 #A = np.array([2,2,1,22,15])
-ctr = 0
-B = []
-print(A)
 mem = np.zeros((len(A),len(A)))
 i = 0
 cantidad = 0
