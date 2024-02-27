@@ -38,8 +38,6 @@ class Node:
             val = n
             suc = Node(parent=self,board=board,value=val,pos=i)
             yield suc
-         #   successors.append(suc)
-        #return successors
 
     def hasSuccessors(self,player):
         if (len(self.availablePos(player)) > 0):
@@ -58,7 +56,6 @@ class Node:
         return available
 
     def checkWinner(self):
-        #print(f"Verificando la posicion {self.modPosition}")
         position = self.modPosition
         rowNum = floor(position/3)
         colNum = position % 3
@@ -69,7 +66,6 @@ class Node:
             if i == "+":
                 count+= 1
         if count == 3:
-            #print(f"La fila ganadora: {row}")
             return True
         count = 0
         col = []
@@ -79,7 +75,6 @@ class Node:
             if i == "+":
                 count+= 1
         if count == 3:
-            #print(f"La columna ganadora: {col}")
             return True
         if self.board[0] == "+" and self.board[4] == "+" and self.board[8] == "+":
             return True
@@ -99,8 +94,6 @@ class Node:
 def primero(nodo,depth, alfa, beta):
     
     if depth == 0 or not nodo.hasSuccessors(Primer_Jugador):
-        #nodo.getBoard()
-        #print(nodo)
         return nodo.evaluate(Primer_Jugador)
 
     else:
@@ -116,8 +109,6 @@ def primero(nodo,depth, alfa, beta):
 def segundo(nodo,depth,alfa,beta):
     
     if depth == 0 or not nodo.hasSuccessors(Segundo_Jugador):
-        #nodo.getBoard()
-        #print(nodo)
         return nodo.evaluate(Segundo_Jugador)
     
     else:
@@ -130,10 +121,6 @@ def segundo(nodo,depth,alfa,beta):
                 break
         return mejor
 
-# Un tablero es un arreglo de largo 9 con 4 posibles valores, +, -, | o " " (espacio en blanco).
-
-
-
 def main():
     base = [" "," "," "," "," "," "," "," "," "]
     raiz = Node(None,base,0,None)
@@ -143,10 +130,5 @@ def main():
 
     print(segundo(raiz,depth,alfa,beta))
 
-
-    
-
 if __name__ == "__main__":
     main()
-    
-
