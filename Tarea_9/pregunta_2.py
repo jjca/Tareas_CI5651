@@ -1,4 +1,4 @@
-from math import ceil, log
+from math import ceil, log2
 import random
 import numpy as np
 
@@ -39,7 +39,7 @@ def repeatFreivalds(A,B,C,n,k):
     return True
 
 def freivaldsEpsilon(A,B,C,n,e):
-    k = ceil(log(1/e))
+    k = ceil(log2(1/e))
     print(k)
     return repeatFreivalds(A,B,C,n,k)
 
